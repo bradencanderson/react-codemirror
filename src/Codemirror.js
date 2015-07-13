@@ -1,7 +1,6 @@
-var CM = require('codemirror');
 var React = require('react');
 
-var CodeMirror = React.createClass({
+var CodeMirrorComponent = React.createClass({
 
 	propTypes: {
 		onChange: React.PropTypes.func,
@@ -17,7 +16,7 @@ var CodeMirror = React.createClass({
 	},
 
 	componentDidMount () {
-		this.codeMirror = CM.fromTextArea(this.refs.codemirror.getDOMNode(), this.props.options);
+		this.codeMirror = CodeMirror.fromTextArea(this.refs.codemirror.getDOMNode(), this.props.options);
 		this.codeMirror.on('change', this.codemirrorValueChanged);
 		this.codeMirror.on('focus', this.focusChanged.bind(this, true));
 		this.codeMirror.on('blur', this.focusChanged.bind(this, false));
@@ -73,4 +72,4 @@ var CodeMirror = React.createClass({
 
 });
 
-module.exports = CodeMirror;
+module.exports = CodeMirrorComponent;
